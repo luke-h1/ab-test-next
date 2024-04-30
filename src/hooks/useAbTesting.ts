@@ -26,8 +26,10 @@ const useAbTesting = () => {
 
         console.log("res is", res.count);
 
-        setVariant(abTest as "control" | "experiment");
+        setVariant('experiment');
       }
+      Cookies.set(cookieName, 'control');
+      setVariant('control');
       return variant;
     };
 
