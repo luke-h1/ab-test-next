@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-
+  // would need to set custom redis keys if we were running multiple experiments
   switch(req.method) {
     case 'GET':
       const response = await redis.get('counter') || '0';
