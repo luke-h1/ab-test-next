@@ -18,7 +18,7 @@ const useAbTesting = () => {
       const FIFTY_PERCENT_OF_USERS = TOTAL_USERS / 2;
 
       if (!abTest && parseInt(count) < FIFTY_PERCENT_OF_USERS) {
-        Cookies.set(cookieName, 'experiment');
+        Cookies.set(cookieName, "experiment");
 
         const res = await fetch("/api/counter", {
           method: "POST",
@@ -26,15 +26,16 @@ const useAbTesting = () => {
 
         console.log("res is", res.count);
 
-        setVariant('experiment');
+        setVariant("experiment");
+      } else {
+        Cookies.set(cookieName, "control");
+        setVariant("control");
       }
-      Cookies.set(cookieName, 'control');
-      setVariant('control');
       return variant;
     };
 
     getAndSetVariant();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 export default useAbTesting;
