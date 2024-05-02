@@ -3,15 +3,12 @@ import Cookies from "js-cookie";
 
 const useAbTesting = () => {
   const [variant, setVariant] = useState<"control" | "experiment">("control");
-  const cookieName = "abTest";
-
-  // expr + cust id hash if have auth
+  const cookieName = "new-redesign-experiment-2024";
 
   useEffect(() => {
     const getAndSetVariant = async () => {
       let abTest = Cookies.get(cookieName);
       const { count } = await fetch("/api/counter").then((res) => res.json());
-      console.log("count is", count);
 
       const TOTAL_USERS = 100;
 
